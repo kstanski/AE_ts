@@ -14,8 +14,8 @@ from tensorflow.contrib.tensorboard.plugins import projector
 from AE_ts_model import Model, open_data, plot_data, plot_z_run
 
 """Hyperparameters"""
-direc = '/home/rob/Dropbox/ml_projects/LSTM/UCR_TS_Archive_2015'
-LOG_DIR = "/home/rob/Dropbox/ml_projects/AE_ts/log_tb"
+direc = '/Users/s1210429/Documents/workspace/AE_ts/data/UCR_TS_Archive_2015'
+LOG_DIR = "/Users/s1210429/Documents/workspace/AE_ts/log"
 config = {}  # Put all configuration information into the dict
 config['num_layers'] = 2  # number of layers of stacked RNN's
 config['hidden_size'] = 90  # memory cells in a layer
@@ -29,7 +29,7 @@ plot_every = 100  # after _plot_every_ GD steps, there's console output
 max_iterations = 1000  # maximum number of iterations
 dropout = 0.8  # Dropout rate
 """Load the data"""
-X_train, X_val, y_train, y_val = open_data('/home/rob/Dropbox/ml_projects/LSTM/UCR_TS_Archive_2015')
+X_train, X_val, y_train, y_val = open_data(direc)
 
 N = X_train.shape[0]
 Nval = X_val.shape[0]
@@ -86,7 +86,7 @@ if True:
             print("At %6s / %6s train (%5.3f, %5.3f, %5.3f), val (%5.3f, %5.3f,%5.3f) in order (total, seq, lat)" % (
             i, max_iterations, loss_train, loss_train_seq, lost_train_lat, loss_val, loss_val_seq, lost_val_lat))
             step += 1
-if False:
+if True:
     ##Extract the latent space coordinates of the validation set
     start = 0
     label = []  # The label to save to visualize the latent space

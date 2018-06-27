@@ -5,3 +5,6 @@
 /ECG5000
 *.m
 .idea
+/venv
+/data
+/log
